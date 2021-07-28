@@ -10,6 +10,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Alert from 'react-bootstrap/Alert';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ExplainModal from './ExplainModal';
 
 function App() {
   const [driverLength, setDriverLength] = useState();
@@ -44,11 +45,11 @@ function App() {
     } else {
       //find aperture hypotenuse
       const apertureHyp = Math.sqrt(apertureWidth ** 2 + apertureDepth ** 2);
-      console.log('Apertye Hyp = ' + apertureHyp);
+      console.log('Aperture Hyp = ' + apertureHyp);
       // find aperture hyp angle
       const apertureHypAngle =
         (Math.asin(apertureDepth / apertureHyp) * 180) / Math.PI;
-      console.log('Apertype Hyp Angle = ' + apertureHypAngle);
+      console.log('Aperture Hyp Angle = ' + apertureHypAngle);
       // find max driver angle
       const maxDriverAngle =
         (Math.acos(driverHeight / apertureHyp) * 180) / Math.PI -
@@ -135,11 +136,17 @@ function App() {
             height="30"
             fill="#ffffff"
             alt="github icon"
-          />{' '}
-          View code/check my maths{' '}
+          />
         </a>
       </Navbar>
       <Container className="mt-3 mb-4 ml-4">
+        <Alert variant="warning">
+          This tool is still in BETA. The maths being done under the hood is
+          still being tweaked so please do not trust the results 100%. <br />
+          <br />
+          It also assumes all drivers are perfectly rectangular, which we know
+          isn't true, so there may be some wiggle room if the tool says no.
+        </Alert>
         <h6>Common Driver Presets</h6>
         <ToggleButtonGroup
           type="radio"
@@ -269,6 +276,7 @@ function App() {
         </Form>
         <hr></hr>
         {renderResult(alertType, alertMsg)}
+        <ExplainModal />
       </Container>
     </>
   );
