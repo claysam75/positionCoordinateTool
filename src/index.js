@@ -112,7 +112,16 @@ function App() {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#">Driver Void Tool</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img
+            src="plug.svg"
+            width="30"
+            height="30"
+            fill="#ffffff"
+            alt="plug icon"
+          />{' '}
+          Driver Void Tool
+        </Navbar.Brand>
         <a
           href="https://github.com/claysam75/drivervoidtool"
           target="_blank"
