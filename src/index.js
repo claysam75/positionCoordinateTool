@@ -145,7 +145,8 @@ function App() {
           still being tweaked so please do not trust the results 100%. <br />
           <br />
           It also assumes all drivers are perfectly rectangular, which we know
-          isn't true, so there may be some wiggle room if the tool says no.
+          isn't true, so there may be some wiggle room if the tool says the
+          driver won't fit.
         </Alert>
         <h6>Common Driver Presets</h6>
         <ToggleButtonGroup
