@@ -27,6 +27,8 @@ function App() {
   const [alertMsg, setAlertMsg] = useState('');
   const [alertType, setAlertType] = useState('');
 
+  let driverAdj;
+
   const renderResult = (type, msg) => {
     if (alert) {
       return <Alert variant={type}>{msg}</Alert>;
@@ -58,11 +60,16 @@ function App() {
       // check if driver can make turn
       const maxDriverAngleRads = (maxDriverAngle * Math.PI) / 180;
       console.log('Max driver angle rads =  ' + maxDriverAngleRads);
-      const driverAdj = Math.cos(maxDriverAngleRads) * driverLength;
+      driverAdj = Math.cos(maxDriverAngleRads) * driverLength;
       console.log('Driver adjacent = ' + driverAdj);
       if (driverAdj <= voidDepth) {
         setAlertType('success');
-        setAlertMsg('Driver will fit this aperture/void combo');
+
+        setAlertMsg(
+          'Driver will fit this aperture/void combo. Minimum depth required is ' +
+            Math.round(driverAdj) +
+            'mm.'
+        );
         setAlert(1);
       } else if (driverAdj >= voidDepth) {
         const requiredVoid = parseInt(driverAdj, 10) + 5;
