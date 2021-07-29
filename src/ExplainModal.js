@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-const step1svg = require('./step1.svg');
 const ExplainModal = () => {
   const [show, setShow] = useState(false);
   const handleShow = () => {
